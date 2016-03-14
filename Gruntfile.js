@@ -38,8 +38,8 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all', 'newer:jscs:all'],
+        files: ['<%= yeoman.app %>/scripts/**/*.js'],
+        tasks: ['angularFileLoader'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
@@ -220,7 +220,7 @@ module.exports = function (grunt) {
             }
           }
       }
-    }, 
+    },
 
     // Renames files for browser caching purposes
     filerev: {
@@ -423,6 +423,15 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    angularFileLoader: {
+      options: {
+        scripts: ['<%= yeoman.app %>/scripts/**/*.js']
+      },
+      app: {
+        src: ['<%= yeoman.app %>/index.html']
+      }
     }
   });
 
@@ -435,6 +444,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'angularFileLoader',
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
@@ -450,6 +460,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'wiredep',
+    'angularFileLoader',
     'concurrent:test',
     'postcss',
     'connect:test',
@@ -459,6 +470,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
+    'angularFileLoader',
     'useminPrepare',
     'concurrent:dist',
     'postcss',
