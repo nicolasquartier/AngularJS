@@ -1,4 +1,4 @@
-'uwe strict';
+'use strict';
 
 //immediate function
 (function() {

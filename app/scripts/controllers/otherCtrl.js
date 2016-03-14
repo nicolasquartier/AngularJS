@@ -1,3 +1,19 @@
-/**
- * Created by NQRAZ66 on 14/03/2016.
- */
+'use strict';
+
+(function() {
+
+  function OtherCtrl($scope) {
+    $scope.generateFromChild = function() {
+      $scope.viewdata.random = Math.random();
+    };
+
+    $scope.removeChild = function() {
+      $scope.viewdata.random = "";
+    };
+  }
+
+  angular.module("demoApp")
+    .controller("otherCtrl", OtherCtrl);
+
+})();
+
