@@ -1,8 +1,10 @@
+'uwe strict';
+
 //immediate function :-)
 (function() {
 
   //declare constants enzo
   angular.module("demoApp.config", [])
-    .constant('appVersion', '0.0.2');
+    .constant('appVersion', '0.0.3');
 
 })();
